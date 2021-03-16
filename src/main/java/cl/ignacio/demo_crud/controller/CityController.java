@@ -1,6 +1,8 @@
 package cl.ignacio.demo_crud.controller;
 
+import cl.ignacio.demo_crud.model.City;
 import cl.ignacio.demo_crud.model.Library;
+import cl.ignacio.demo_crud.repository.city.CityRepository;
 import cl.ignacio.demo_crud.repository.library.LibraryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,13 +17,12 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("library")
-public class LibraryController {
-    private final LibraryRepository repository;
+@RequestMapping("city")
+public class CityController {
+    private final CityRepository repository;
 
     @GetMapping()
-    public ResponseEntity<List<Library>> getLibraries() {
-        return new ResponseEntity<List<Library>>(repository.getLibraries(), HttpStatus.OK);
+    public ResponseEntity<List<City>> getLibraries() {
+        return new ResponseEntity<List<City>>(repository.getCities(), HttpStatus.OK);
     }
-
 }

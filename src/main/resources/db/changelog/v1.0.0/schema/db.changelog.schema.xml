@@ -4,51 +4,104 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
     <changeSet author="ignacio-devs" id="00-1">
         <createTable
-                remarks="registra el ultimo resolutor asignado para la asignacion por Round Robin.\nCada vez que se asigna una solicitud, se registra el ultimo asignado."
-                tableName="DC_LIBRARY">
+                tableName="DC_CITY">
             <column name="ID" type="NUMBER(38, 0)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DC_LIBRARY"/>
             </column>
-            <column name="NAME" remarks="Id de la tipologia" type="VARCHAR2(50)">
+            <column name="NAME" remarks="Nombre de la ciudad" type="VARCHAR2(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="EMAIL" remarks="Ultimo resolutor asignado" type="VARCHAR2(50)">
+            <column name="LATITUDE" type="VARCHAR2(200)">
                 <constraints nullable="false"/>
             </column>
-            <column name="COUNTY" remarks="Ultimo resolutor asignado" type="VARCHAR2(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="LATITUDE" remarks="Ultimo resolutor asignado" type="VARCHAR2(200)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="LONGITUDE" remarks="Ultimo resolutor asignado" type="VARCHAR2(200)">
+            <column name="LONGITUDE" type="VARCHAR2(200)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-4
     <changeSet author="ignacio-devs" id="00-2">
         <createTable
-                remarks="registra el ultimo resolutor asignado para la asignacion por Round Robin.\nCada vez que se asigna una solicitud, se registra el ultimo asignado."
                 tableName="DC_LIBRARY">
             <column name="ID" type="NUMBER(38, 0)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DC_LIBRARY"/>
             </column>
-            <column name="NAME" remarks="Id de la tipologia" type="VARCHAR2(50)">
+            <column name="NAME" type="VARCHAR2(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="EMAIL" remarks="Ultimo resolutor asignado" type="VARCHAR2(50)">
+            <column name="EMAIL" type="VARCHAR2(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="COUNTY" remarks="Ultimo resolutor asignado" type="VARCHAR2(50)">
+            <column name="LATITUDE" type="VARCHAR2(200)">
                 <constraints nullable="false"/>
             </column>
-            <column name="LATITUDE" remarks="Ultimo resolutor asignado" type="VARCHAR2(200)">
-                <constraints nullable="false"/>
+            <column name="LONGITUDE" type="VARCHAR2(200)">
+
             </column>
-            <column name="LONGITUDE" remarks="Ultimo resolutor asignado" type="VARCHAR2(200)">
+            <column name="ID_CITY" type="NUMBER(38, 0)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <addForeignKeyConstraint baseColumnNames="ID_CITY"
+                                 baseTableName="DC_LIBRARY"
+                                 constraintName="fk_id_city_library"
+                                 referencedColumnNames="ID"
+                                 referencedTableName="DC_CITY"/>
+    </changeSet>
+
+    <changeSet author="ignacio-devs" id="00-3">
+        <createTable
+                tableName="DC_BOOKS">
+            <column name="ID" type="NUMBER(38, 0)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DC_LIBRARY"/>
+            </column>
+            <column name="NAME" remarks="Nombre del libro" type="VARCHAR2(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PAGES" remarks="Número de páginas" type="NUMBER(3, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CHAPTERS" remarks="Cantidad de capitulos" type="NUMBER(3, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SUBCHAPTERS" remarks="Cantidad de subcapitulos" type="NUMBER(3, 0)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="ISBN" remarks="Identificador único del libro" type="VARCHAR2(200)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="ignacio-devs" id="00-6">
+        <addAutoIncrement catalogName="demo_crud"
+                          columnDataType="int"
+                          columnName="id"
+                          defaultOnNull="false"
+                          generationType="ALWAYS"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="1"
+                          tableName="DC_CITY"/>
+    </changeSet>
+
+    <changeSet author="ignacio-devs" id="00-7">
+        <addAutoIncrement catalogName="demo_crud"
+                          columnDataType="int"
+                          columnName="id"
+                          defaultOnNull="false"
+                          generationType="ALWAYS"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="1"
+                          tableName="DC_BOOKS"/>
+        <addAutoIncrement catalogName="demo_crud"
+                          columnDataType="int"
+                          columnName="id"
+                          defaultOnNull="false"
+                          generationType="ALWAYS"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="1"
+                          tableName="DC_LIBRARY"/>
     </changeSet>
 </databaseChangeLog>

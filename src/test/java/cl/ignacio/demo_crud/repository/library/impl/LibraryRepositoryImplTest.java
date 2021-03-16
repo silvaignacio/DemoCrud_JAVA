@@ -1,6 +1,6 @@
-package cl.ignacio.demo_crud.repository.impl;
+package cl.ignacio.demo_crud.repository.library.impl;
 
-import cl.ignacio.demo_crud.repository.LibraryRepository;
+import cl.ignacio.demo_crud.repository.library.LibraryRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;

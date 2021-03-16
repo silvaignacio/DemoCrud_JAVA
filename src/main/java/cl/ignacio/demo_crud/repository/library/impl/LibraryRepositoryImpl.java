@@ -1,7 +1,7 @@
-package cl.ignacio.demo_crud.repository.impl;
+package cl.ignacio.demo_crud.repository.library.impl;
 
 import cl.ignacio.demo_crud.model.Library;
-import cl.ignacio.demo_crud.repository.LibraryRepository;
+import cl.ignacio.demo_crud.repository.library.LibraryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

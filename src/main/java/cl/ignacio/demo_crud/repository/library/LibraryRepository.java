@@ -1,4 +1,4 @@
-package cl.ignacio.demo_crud.repository;
+package cl.ignacio.demo_crud.repository.library;
 
 import cl.ignacio.demo_crud.model.Library;
 
