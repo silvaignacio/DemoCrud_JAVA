@@ -12,13 +12,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LibraryRepositoryImpl implements LibraryRepository {
 
+    private final static String GET_LIBRARIES = "SELECT ID, NAME, EMAIL, COUNTY, LATITUDE, LONGITUDE FROM DC_LIBRARY;";
     private final JdbcTemplate jdbcTemplate;
-
-    private final static String GET_LIBRARIES = "SELECT ID, NAME, ";
 
     @Override
     public List<Library> getLibraries() {
-        return null;
+        return jdbcTemplate.query(
+                GET_LIBRARIES, (rs, rowNum) ->
+                        Library.builder().
+                                id(rs.getLong("ID"))
+                                .county(rs.getString("COUNTY"))
+                                .email(rs.getString("EMAIL"))
+                                .latitude(rs.getString("LATITUDE"))
+                                .longitude(rs.getString("LONGITUDE"))
+                                .name(rs.getString("NAME")).build());
     }
 
 }

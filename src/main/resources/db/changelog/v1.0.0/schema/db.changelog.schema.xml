@@ -1,0 +1,30 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="seiza-devs" id="00-1">
+        <createTable
+                remarks="registra el ultimo resolutor asignado para la asignacion por Round Robin.\nCada vez que se asigna una solicitud, se registra el ultimo asignado."
+                tableName="DC_LIBRARY">
+            <column name="ID" type="NUMBER(38, 0)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DC_LIBRARY"/>
+            </column>
+            <column name="NAME" remarks="Id de la tipologia" type="VARCHAR2(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMAIL" remarks="Ultimo resolutor asignado" type="VARCHAR2(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COUNTY" remarks="Ultimo resolutor asignado" type="VARCHAR2(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LATITUDE" remarks="Ultimo resolutor asignado" type="VARCHAR2(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LONGITUDE" remarks="Ultimo resolutor asignado" type="VARCHAR2(200)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
